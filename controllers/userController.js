@@ -1,6 +1,7 @@
 const { User } = require('../models');
 
 module.exports = {
+    // GET all of the users
     async getAllUsers(req, res) {
         try {
             const users = await User.find();
@@ -9,6 +10,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    // GET a single user by its _id
     async getSingleUser(req, res) {
         try {
             const user = await User.findOne({ _id: req.params.userId });
@@ -20,6 +22,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    // POST or "create" a new user
     async createUser(req, res) {
         try {
             const user = await User.create(req.body);
@@ -29,6 +32,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    // PUT or "update" a user by its _id
     async updateUser(req, res) {
         try {
             const user = await User.findOneAndUpdate(
